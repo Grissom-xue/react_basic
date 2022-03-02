@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用js创建虚拟DOM</title>
+</head>
+<body>
+    <!-- 准备一个容器 -->
+    <div id="app"></div>
+
+    <!-- 引入react核心库 ,必须最先引入-->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom,用于支持React操作DOM -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+
+
+    <!-- 注意点，type一定要写babel 告诉网页这里写的是jsx -->
+    <script type="text/javascript">
+        // 1. 创建虚拟DOM(赋值的时候不要写引号，千万不能写)
+        // 如果标签里面嵌套标签就会相当麻烦
+        const VDOM = React.createElement("h1",{id:'title'},React.createElement("span",{},"hello_react"))
+        // 2. 渲染虚拟DOM到页面
+        ReactDOM.render(VDOM,document.getElementById("app"))
+    </script>
+</body>
+</html>
