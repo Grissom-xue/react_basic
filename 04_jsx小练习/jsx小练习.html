@@ -25,38 +25,44 @@
     <!-- 注意点，type一定要写babel 告诉网页这里写的是jsx -->
     <script type="text/babel">
 
-        const myId = "Test"
-        const myContent = "hello react"
+        const data = ['Angular','Vue','react']
         // 1. 创建虚拟DOM(赋值的时候不要写引号，千万不能写)
         const VDOM =(
-            //jsx 中class属性要写成className
-            
             <div>
-                <h2 className="title" id={myId.toLocaleLowerCase()}>
-                <span style={{color:'red',fontSize:'30px'}}>{myContent.toLocaleUpperCase()}</span>
-                </h2>
-                <h2 className="title" id={myId.toLocaleUpperCase()}>
-                    <span style={{color:'red',fontSize:'30px'}}>{myContent.toLocaleUpperCase()}</span>
-                </h2>
-                <input type="text"/>
+                <h2>前端JS框架</h2>
+                <ul>
+                    {
+                        // 数组遍历，要注意的点 li上需要有个可以的属性 且是独一无二的
+                        data.map((item,index)=>{
+                            return <li key={index}>{item}</li>
+                        })
+                    
+                    }
+                </ul>
             </div>
         )
         // 2. 渲染虚拟DOM到页面
         ReactDOM.render(VDOM,document.getElementById("app"))
 
-
         /*
-                jsx语法规则：
-                1. 定义虚拟DOM的时候，不要用引号
-                2. jsx 中class属性要写成className
-                3. 标签中混入JS表达式时要用{}
-                4. 使用内联样式的时候需要使用{{key:'value'}}的形式来写 举例：style={{color:'red',fontSize:'30px'}}
-                5. 不能有多个根标签,只能是一个
-                6. 标签必须闭合
-                7. 标签首字母：
-                    * 若小写字母开头，则将该标签转为HTML中同名元素，如果没有同名元素则报错
-                    * 若大写字母开头，React则去渲染对应组件，若组件没有定义，则报错
+            表达式与代码语句的区别：
+                * 一个表达式会产生一个值，可以放在任何一个需要值得地方。举例说明：
+                    1. a
+                    2. a+b
+                    3. demo(1)
+                    4. arr.map()
+                    5. function test(){}
+                * 语句(代码)
+                    1. if
+                    2. for
+                    3. switch(){case:}
+            React 中无法使用对象作为子节点
+            React 中只能放一些表达式，不能直接放JS语句
+
+        
         */
+
+
     </script>
 </body>
 </html>
