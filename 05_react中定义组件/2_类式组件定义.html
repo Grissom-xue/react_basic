@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>函数式组件定义</title>
+    <title>类式组件定义</title>
     <style>
         .title{
             background-color: rgb(199, 188, 38);
@@ -18,16 +18,21 @@
     <script src="../js/babel.min.js"></script>
 
     <script type="text/babel">
-        // 1. 创建函数式组件,组件名称需要是首字母大写
-        function MyComponent(){
-            console.log(this)//undefined,babel编译之后开启了严格模式，然后将指向window的this给取消掉了
-            return <h2>我是函数定义的组件</h2>// 函数必须有返回值
+        // 1. 创建类式组件,组件名称需要是首字母大写
+        class MyComponent extends React.Component{
+            // 问题1： render方法放在哪？ 【通过 MyComponent实例 调用render时，render中的this就是MyComponent实例】
+            // 问题2： MyComponent在哪创建了实例对象？ReactDOM.render调用的时候 自动创建了
+            render(){
+                return(
+                    <h1>类式组件,适用于复杂组件的定义</h1>
+                )
+            }
         }
         ReactDOM.render(<MyComponent/>,document.getElementById("app"))
         /*
             执行了ReactDOM.render之后发生了什么？？
             1. React解析组件标签，找到了MyComponent组件。
-            2. 发现组件是使用函数定义的，随后调用该函数，将返回的虚拟DOM转为真实DOM，随后呈现在页面中
+            2. 发现组件是使用类定义的，随后创建（new）类的实例，并通过该实例调用到原型上的render方法，将render返回的虚拟DOM转为真实DOM，随后呈现在页面中
         */
         
     </script>
