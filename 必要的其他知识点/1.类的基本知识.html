@@ -33,13 +33,16 @@
                     console.log('I study hard')
                 }
         }
+        class Car{
+            constructor(name,price){
+                this.name=name
+                this.price=price
+            }
+            // 类中可以直接写赋值语句，代表直接给类添加一个变量
+            wheel=4
 
-        // Person类的speak方法在自身的显示原型对象上
-        console.log(Person.prototype)//{constructor: ƒ, speak: ƒ}
+        }
 
-        const s1 = new Student('gg',28,6)
-        console.log(s1)
-        s1.speak()
 
 
         /*

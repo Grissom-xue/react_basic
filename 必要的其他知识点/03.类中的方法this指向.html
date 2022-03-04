@@ -18,12 +18,16 @@
             speak(){
                 // 问题2：speak中的this是谁？【通过Person实例调用speak时，speak中的this就是Person实例】
                 console.log(`我叫${this.name},我的年龄是${this.age}`)
+                console.log(this)
             }
            
         }
 
 
         const p1 = new Person('tom',18)
+        p1.speak()
+        const x = p1.speak
+        x()// 此时this是Undefined， 类中定义的所有方法都自动开启了严格模式，this不会指向window
     </script>
 </body>
 </html>
