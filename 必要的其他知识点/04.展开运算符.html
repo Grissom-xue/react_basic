@@ -12,6 +12,20 @@
         let arr2 = [1,2,3,6,5]
 
         let arr3 = [...arr1,...arr2]
+
+        // 数组方法reduce： 将数组内的所有数字进行相加
+        function sum(...numbers){
+            return numbers.reduce((preValue,currentValue)=>{
+                return preValue + currentValue
+            })
+        }
+
+        let person = {name:'张三',age:22}
+        console.log(...person)// 报错 展开运算符不能展开对象
+        console.log({...person})// 原生里面这样写才是对的
+
+
+        let person2 = {...person,name:'jack',address:'sss'}
     </script>
 </body>
 </html>
